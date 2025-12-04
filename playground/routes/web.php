@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WorkExperienceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +22,7 @@ Route::get('/hello', function () {
 
 Route::prefix('/admin')->name('admin.')->group(function () {
     Route::prefix('/profile')->name('profile.')->group(function () {
-        Route::get('/user/{id}/edit', function ($id) {
-            return 'User Profile Edit Page for ID: ' . $id;
-        })->name('user.edit');
+        Route::get('/user/{id}/edit', [UserController::class, 'editProfile'])->name('user.edit');
 
         Route::get('/user/{id?}', function ($id = null) {
             return 'User Profile Show Page for ID: ' . $id;
@@ -70,3 +70,29 @@ Route::get('form-submit', function (Request $request) {
 
     return 'Form submitted successfully!';
 })->name('form.submit');
+
+Route::get('login', [UserController::class, 'showLogin'])->name('login');
+Route::get('register', [UserController::class, 'showRegister'])->name('register');
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+Route::get('profile', [UserController::class, 'showProfile'])->name('profile.show');
+
+Route::get('work-experiences', [WorkExperienceController::class, 'show'])->name('work-experience.show');
+
+/**
+ *
+ * company name: Acme Corp
+ * position: Software Engineer
+ * tenure: Jan 2020 - Present
+ *
+ * company name: Beta Solutions
+ * position: Junior Developer
+ * tenure: Jan 2018 - Dec 2019
+ *
+ */
+
+/**
+ * PascalCase
+ * snake_case
+ * kebab-case
+ * camelCase
+ */
