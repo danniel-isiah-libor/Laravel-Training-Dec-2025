@@ -45,4 +45,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function getData()
+    {
+        return 
+        [
+            'id' => 1,
+            'name' => "Ferdi",
+            'email' => "fhbanal@sec.gov.ph"
+        ];
+    }
+
 }
