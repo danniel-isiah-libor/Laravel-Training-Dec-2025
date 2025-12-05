@@ -14,7 +14,7 @@ class UserController extends Controller
     }
     public function showRegister()
     {
-        return "Register Page";
+        return view('register');
     }
     public function logout()
     {
