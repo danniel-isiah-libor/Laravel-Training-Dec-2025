@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     // logic here ....
     return view('welcome');
-});
+})->name('welcome');
 
 // Route::view('/', 'welcome');
 
@@ -72,6 +72,7 @@ Route::get('form-submit', function (Request $request) {
 })->name('form.submit');
 
 Route::get('login', [UserController::class, 'showLogin'])->name('login');
+Route::post('login', [UserController::class, 'authenticate'])->name('authenticate');
 
 Route::get('register', [UserController::class, 'showRegister'])->name('register');
 Route::post('register', [UserController::class, 'register'])->name('register.store');
