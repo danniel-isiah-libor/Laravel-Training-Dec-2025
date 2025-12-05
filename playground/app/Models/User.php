@@ -54,4 +54,9 @@ class User extends Authenticatable
             'email' => 'taro@example.com',
         ];
     }
+
+    public static function isAdmin()
+    {
+        return true;
+    }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueEmailRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
 
 class RegisterRequest extends FormRequest
@@ -23,6 +26,11 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
+            // 'user_id' => [
+            //     'required',
+            //     'integer',
+            //     // 'exists:users,id',
+            // ],
             'name' => [
                 'required',
                 'string',
@@ -34,6 +42,7 @@ class RegisterRequest extends FormRequest
                 'max:255',
                 'email:dns,strict,rfc',
                 'unique:users,email',
+                // new UniqueEmailRule
             ],
             'password' => [
                 'required',
@@ -49,5 +58,24 @@ class RegisterRequest extends FormRequest
                 Password::defaults(),
             ]
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.email' => 'The email must be a valid email address.',
+            'email.unique' => 'The email has already been taken.',
+            'password.confirmed' => 'The password confirmation does not match.',
+        ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $userId = Cache::get('user_id');
+        // Session::get('user_id');
+
+        $this->merge([
+            'user_id' => $userId,
+        ]);
     }
 }
