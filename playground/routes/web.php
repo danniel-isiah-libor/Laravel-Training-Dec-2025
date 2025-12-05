@@ -1,21 +1,6 @@
 <?php
 
 use App\Http\Controllers\UserController;
-<<<<<<< HEAD
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::prefix('user')->group(function () {
-    Route::get('/register', [UserController::class, 'showRegister'])->name('register');
-    
-    Route::get('/login', [UserController::class, 'showLogin'])->name('login');
-    
-    Route::get('/logout', [UserController::class, 'showLogout'])->name('logout');
-});
-=======
 use App\Http\Controllers\WorkExperienceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -111,4 +96,3 @@ Route::get('work-experiences', [WorkExperienceController::class, 'show'])->name(
  * kebab-case
  * camelCase
  */
->>>>>>> ba83d18b5ddbdacbc22c59f5fc27131c86e33702
