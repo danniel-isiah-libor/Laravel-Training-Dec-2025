@@ -12,6 +12,7 @@
         <ul>
             @foreach ($workExperiences as $workExperience)
                 <li>
+                    {{-- {!! $script !!} --}}
                     <h2>{{ $workExperience->company_name }}</h2>
                     <p>Position: {{ $workExperience->position }}</p>
                     <p>Duration: {{ $workExperience->tenure }}</p>
