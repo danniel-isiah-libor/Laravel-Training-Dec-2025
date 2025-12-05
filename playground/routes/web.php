@@ -72,7 +72,10 @@ Route::get('form-submit', function (Request $request) {
 })->name('form.submit');
 
 Route::get('login', [UserController::class, 'showLogin'])->name('login');
+
 Route::get('register', [UserController::class, 'showRegister'])->name('register');
+Route::post('register', [UserController::class, 'register'])->name('register.store');
+
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 Route::get('profile', [UserController::class, 'showProfile'])->name('profile.show');
 
