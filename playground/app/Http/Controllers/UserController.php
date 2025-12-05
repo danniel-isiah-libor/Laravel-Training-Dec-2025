@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Models\WorkExperience;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Password;
+
 
 class UserController extends Controller
 {
@@ -15,6 +18,11 @@ class UserController extends Controller
     public function showRegister()
     {
         return view('register');
+    }
+    public function register(RegisterRequest $request)
+    {
+        $dump = $request->validated();
+        dd($dump);
     }
     public function logout()
     {
