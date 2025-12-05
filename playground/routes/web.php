@@ -10,6 +10,7 @@ Route::get('/', function () {
 Route::get('/login',[UserController::class,'showLogin'])->name('login');
 
 Route::get('register',[UserController::class,'showRegister'])->name('register');
+Route::post('register',[UserController::class,'register'])->name('register.submit');
 
 Route::get('logout',[UserController::class,'logout'])->name('logout');
 
