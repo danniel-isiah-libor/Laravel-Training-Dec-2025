@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
-use App\Models\WorkExperience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
-
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -17,40 +18,51 @@ class UserController extends Controller
     {
         return view('login');
     }
+
+    public function authenticate(LoginRequest $request)
+    {
+        $validateForm = $request->validated();
+
+        $user = User::where('email', $validateForm['email'])->first();
+
+        Auth::login($user);
+
+        return redirect()->route('welcome');
+    }
+
     public function showRegister()
     {
+        Cache::put('user_id', 1);
+        // Session::put('user_id', 1);
+
         return view('register');
     }
 
     public function register(RegisterRequest $request)
     {
-        $dump = $request->validated();
-        dd($dump);
+        $validatedForm = $request->validated();
+
+        // saving...
     }
 
-    public function login(LoginRequest $request)
-    {
-        $dump = $request->validated();
-        dd($dump);
-    }
-    
     public function logout()
     {
         Auth::logout();
-        return "Logout User";
+
+        return redirect()->route('login');
     }
-    public function showData()
+
+    public function showProfile()
     {
         $user = User::getData();
-        return view('user.data',['user'=>$user]);
+
+        return view('user.profile', [
+            'user' => $user,
+        ]);
     }
 
-    public function showWorkExperience()
+    public function editProfile(Request $request, $id)
     {
-        $workExperiences = WorkExperience::getExperiences();
-
-        return view('user.work-experience', [
-            'workExperiences' => $workExperiences
-        ]);
+        return 'User Profile Edit Page for ID: ' . $id;
     }
 }

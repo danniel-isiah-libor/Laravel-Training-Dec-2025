@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\LoginRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
 class LoginRequest extends FormRequest
 {
@@ -12,7 +12,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,18 +25,13 @@ class LoginRequest extends FormRequest
         return [
             'email' => [
                 'required',
-                'email:dns,strict,rfc',
+                'string',
+                new LoginRule
             ],
             'password' => [
                 'required',
                 'string',
-                Password::min(8)
-                    ->max(12)
-                    ->symbols()
-                    ->numbers()
-                    ->letters()
-                    ->uncompromised(),
-            ],
+            ]
         ];
     }
 }

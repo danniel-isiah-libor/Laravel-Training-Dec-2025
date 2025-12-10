@@ -6,6 +6,7 @@ use App\Models\User;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginRule implements ValidationRule
 {
@@ -17,15 +18,20 @@ class LoginRule implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $email = $value;
-        $password = request()->password;
+        $password = request()->password; // Admin123!
 
-        $user = User::where('email',$email)->first();
+        $user = User::where('email', $email)->first();
 
-        $hashedPassword = $user->password;
+        $hashedPassword = $user->password; // sldiuwzgnvangoorih
 
-        if (Auth::attempt(['email'=>$email,'password'=>$password]) === false)
-        {  
-            $fail('Invalid Credentials',null);
+        // option 1
+        // if (Hash::check($password, $hashedPassword)) {
+        //     $fail('Invalid credentials');
+        // }
+
+        // option 2
+        if (Auth::attempt(['email' => $email, 'password' => $password]) === false) {
+            $fail('Invalid credentials');
         }
     }
 }

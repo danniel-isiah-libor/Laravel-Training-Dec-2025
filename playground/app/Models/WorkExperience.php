@@ -2,23 +2,39 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WorkExperience extends Model
 {
-public static function getExperiences()
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'user_id',
+        'uuid',
+        'company_name',
+        'position',
+        'start_date',
+        'end_date',
+    ];
+
+    public static function getData()
     {
         return [
             (object) [
-                'company' => 'Tech Solutions Inc.',
+                'id' => 1,
+                'company_name' => 'Example Corp',
                 'position' => 'Software Engineer',
-                'duration' => 'Jan 2020 - Present',
+                'tenure' => '2018-2020',
             ],
+
             (object) [
-                'company' => 'Web Innovations Ltd.',
-                'position' => 'Junior Developer',
-                'duration' => 'Jun 2018 - Dec 2019',
-            ],
+                'id' => 2,
+                'company_name' => 'Another Inc',
+                'position' => 'Senior Developer',
+                'tenure' => '2020-Present',
+            ]
         ];
     }
 }

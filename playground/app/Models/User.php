@@ -42,18 +42,21 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashesd',
+            'password' => 'hashed',
         ];
     }
 
     public static function getData()
     {
-        return 
-        [
+        return (object) [
             'id' => 1,
-            'name' => "Ferdi",
-            'email' => "fhbanal@sec.gov.ph"
+            'name' => 'Taro',
+            'email' => 'taro@example.com',
         ];
     }
 
+    public static function isAdmin()
+    {
+        return true;
+    }
 }

@@ -6,16 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Button extends Component
+class Quote extends Component
 {
-    private $label;
-
     /**
      * Create a new component instance.
      */
-    public function __construct($label)
+    public function __construct()
     {
-        $this->label = $label;
+        //
     }
 
     /**
@@ -23,8 +21,10 @@ class Button extends Component
      */
     public function render(): View|Closure|string
     {
-        // manipulate data if needed ....
-
-        return view('components.button', ['label' => $this->label]);
+        return <<<'blade'
+<div>
+    <p class="text-white"> When there is no desire, all things are at peace. - Laozi </p>
+</div>
+blade;
     }
 }
