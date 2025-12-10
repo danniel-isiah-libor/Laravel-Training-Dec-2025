@@ -8,6 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login',[UserController::class,'showLogin'])->name('login');
+Route::post('login',[UserController::class,'login'])->name('login.submit');
 
 Route::get('register',[UserController::class,'showRegister'])->name('register');
 Route::post('register',[UserController::class,'register'])->name('register.submit');
