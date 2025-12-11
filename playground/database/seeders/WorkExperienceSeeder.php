@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\WorkExperience;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,7 +17,16 @@ class WorkExperienceSeeder extends Seeder
     {
         // WorkExperience::truncate();
 
-        // WorkExperience::factory()->count(10)->create();
+        // WorkExperience::factory()
+        //     ->count(10)
+        //     ->create();
+
+        // User::factory()
+        //     ->count(5)
+        //     ->has(
+        //         WorkExperience::factory()->count(3)
+        //     )
+        //     ->create();
 
         // retrieve csv...
         // convert to array...
@@ -92,5 +102,29 @@ class WorkExperienceSeeder extends Seeder
         // $record->save();
 
         // WorkExperience::where('id', 2)->forceDelete();
+
+        $records = User::with([
+            'workExperiences' => function ($query) {
+                // $query->whereNotNull('end_date');
+            }
+        ])
+            ->whereHas('workExperiences', function ($query) {
+                // $query->whereBetween('end_date', [now()->firstOfYear(), now()]);
+
+                // JSON column
+                // $query->whereJsonContains('payload', 'product');
+                // $query->where('payload->product', 'cars');
+            })
+            ->where('id', 1)
+            // ->where(function ($query) {
+            //     $query->where('name', 'like', '%john%')
+            //         ->orWhere('email', 'like', '%john%');
+            // })
+            // ->join('work_experiences as table1', function ($join) {
+            //     $join->on('users.id', '=', 'table1.user_id')
+            //         ->where(...);
+            // })
+            // ->where('table1.position', 'like', '%Engineer%')
+            ->first();
     }
 }
