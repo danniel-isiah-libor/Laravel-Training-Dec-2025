@@ -12,10 +12,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(4);
 
         return view('posts.index', ['posts' => $posts]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,14 +25,25 @@ class PostController extends Controller
     {
         return view('posts.create');
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        $post = Post::create($validated);
+
+        return redirect()
+            ->route('posts.show', $post->id)
+            ->with('success', 'Post created successfully!');
     }
+
 
     /**
      * Display the specified resource.
