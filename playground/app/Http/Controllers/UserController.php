@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Models\WorkExperience;
@@ -13,13 +14,18 @@ class UserController extends Controller
 {
     public function showLogin()
     {
-        return "Login Page";
+        return view('login');
     }
     public function showRegister()
     {
         return view('register');
     }
     public function register(RegisterRequest $request)
+    {
+        $dump = $request->validated();
+        dd($dump);
+    }
+    public function login(LoginRequest $request)
     {
         $dump = $request->validated();
         dd($dump);
@@ -31,7 +37,7 @@ class UserController extends Controller
     public function showData()
     {
         $user = User::getData();
-        return view('user.data',['user'=>$user]);
+        return view('user.data', ['user' => $user]);
     }
 
     public function showWorkExperience()
