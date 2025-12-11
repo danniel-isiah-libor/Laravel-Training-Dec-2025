@@ -2,14 +2,8 @@
 
 namespace App\Http\Requests;
 
-<<<<<<< HEAD
-use Illuminate\Foundation\Http\FormRequest;
-=======
-use App\Rules\UniqueEmailRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Session;
->>>>>>> 31cff93ebf77aad3d6d0e606e529ca6083113c5a
 use Illuminate\Validation\Rules\Password;
 
 class RegisterRequest extends FormRequest
@@ -30,14 +24,6 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-<<<<<<< HEAD
-=======
-            // 'user_id' => [
-            //     'required',
-            //     'integer',
-            //     // 'exists:users,id',
-            // ],
->>>>>>> 31cff93ebf77aad3d6d0e606e529ca6083113c5a
             'name' => [
                 'required',
                 'string',
@@ -46,32 +32,15 @@ class RegisterRequest extends FormRequest
             'email' => [
                 'required',
                 'string',
-<<<<<<< HEAD
-                'email:dns,strict,rfc',
-                'max:255',
-                'unique:users,email',
-=======
                 'max:255',
                 'email:dns,strict,rfc',
                 'unique:users,email',
                 // new UniqueEmailRule
->>>>>>> 31cff93ebf77aad3d6d0e606e529ca6083113c5a
             ],
             'password' => [
                 'required',
                 'string',
                 'confirmed',
-<<<<<<< HEAD
-                Password::min(8)
-                    ->max(12)
-                    ->symbols()
-                    ->numbers()
-                    ->letters()
-                    ->uncompromised(),
-            ],
-        ];
-    }
-=======
                 // Password::min(8)
                 //     ->max(12)
                 //     ->mixedCase()
@@ -102,5 +71,4 @@ class RegisterRequest extends FormRequest
             'user_id' => $userId,
         ]);
     }
->>>>>>> 31cff93ebf77aad3d6d0e606e529ca6083113c5a
 }
