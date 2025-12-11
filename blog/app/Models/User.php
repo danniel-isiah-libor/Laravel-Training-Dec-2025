@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+=======
+>>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -63,4 +66,18 @@ class User extends Authenticatable implements MustVerifyEmail
             ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+<<<<<<< HEAD
 }
+=======
+
+    /**
+     * Get the posts for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+}
+>>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19

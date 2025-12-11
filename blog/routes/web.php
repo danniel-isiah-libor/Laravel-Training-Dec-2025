@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\PostController;
+>>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
@@ -29,4 +33,9 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+<<<<<<< HEAD
+=======
+
+    Route::resource('posts', PostController::class);
+>>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19
 });

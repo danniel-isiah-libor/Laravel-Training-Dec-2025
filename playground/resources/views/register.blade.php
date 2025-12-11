@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-900">
+<x-layout.guest>
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <x-title label="Register to your account" />
 
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1532,6 +1534,18 @@
 
                 <x-form.input-field name="email" label="Email" type="email" />
 
+=======
+        <x-quote />
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <form action="{{ route('register.store') }}" method="POST" class="space-y-6">
+                @csrf
+
+                <x-form.input-field name="name" label="Name" />
+
+                <x-form.input-field name="email" label="Email" type="email" />
+
+>>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19
                 <x-form.input-field name="password" label="Password" type="password" />
 
                 <x-form.input-field name="password_confirmation" label="Confirm Password" type="password" />
@@ -1546,7 +1560,11 @@
             </p>
         </div>
     </div>
+<<<<<<< HEAD
 
 </body>
 
 </html>
+=======
+</x-layout.guest>
+>>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19

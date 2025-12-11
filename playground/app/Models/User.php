@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return true;
     }
+
+    public function workExperiences()
+    {
+        return $this->hasMany(WorkExperience::class);
+    }
 }

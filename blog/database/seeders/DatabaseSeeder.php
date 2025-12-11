@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         // User::factory(10)->create();
 
         // User::firstOrCreate(
@@ -23,8 +24,14 @@ class DatabaseSeeder extends Seeder
         //         'email_verified_at' => now(),
         //     ]
         // );
+=======
+>>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19
         $this->call([
             PostSeeder::class,
         ]);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19
