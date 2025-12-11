@@ -48,16 +48,6 @@ class User extends Authenticatable
 
     public static function getData()
     {
-<<<<<<< HEAD
-        return 
-        [
-            'id' => 1,
-            'name' => "Ferdi",
-            'email' => "fhbanal@sec.gov.ph"
-        ];
-    }
-
-=======
         return (object) [
             'id' => 1,
             'name' => 'Taro',
@@ -69,5 +59,4 @@ class User extends Authenticatable
     {
         return true;
     }
->>>>>>> 31cff93ebf77aad3d6d0e606e529ca6083113c5a
 }
