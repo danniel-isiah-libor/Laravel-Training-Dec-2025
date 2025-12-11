@@ -9,8 +9,6 @@ class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
-<<<<<<< HEAD
-=======
 
     /**
      * The attributes that are mass assignable.
@@ -32,5 +30,4 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
->>>>>>> 910b9517e79d88702b2a2abf97d9d92068540c19
 }
