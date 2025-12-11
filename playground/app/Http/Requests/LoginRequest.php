@@ -2,6 +2,10 @@
 
 namespace App\Http\Requests;
 
+<<<<<<< HEAD
+=======
+use App\Rules\LoginRule;
+>>>>>>> 31cff93ebf77aad3d6d0e606e529ca6083113c5a
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
@@ -24,11 +28,17 @@ class LoginRequest extends FormRequest
         return [
             'email' => [
                 'required',
+<<<<<<< HEAD
                 'email:dns,strict,rfc',
+=======
+                'string',
+                new LoginRule
+>>>>>>> 31cff93ebf77aad3d6d0e606e529ca6083113c5a
             ],
             'password' => [
                 'required',
                 'string',
+<<<<<<< HEAD
                 'min:8',
                 'max:12',
             ],
@@ -42,6 +52,9 @@ class LoginRequest extends FormRequest
             'password.required' => 'Password is required',
             'password.min' => 'Password must be at least 8 characters',
             'password.max' => 'Password must not exceed 12 characters',
+=======
+            ]
+>>>>>>> 31cff93ebf77aad3d6d0e606e529ca6083113c5a
         ];
     }
 }
