@@ -33,3 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('posts', PostController::class);
 });
+
+Route::get('/about-us', function () {
+    \Log::info('test');
+})->name('about');

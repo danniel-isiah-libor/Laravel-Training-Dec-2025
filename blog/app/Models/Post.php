@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +20,15 @@ class Post extends Model
         'user_id',
         'title',
         'body',
+    ];
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array<int, string>
+     */
+    protected $with = [
+        'user',
     ];
 
     /**

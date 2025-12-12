@@ -17,7 +17,7 @@
                         </div>
                         <div class="group relative grow">
                             <h3 class="mt-3 text-lg/6 font-semibold text-white group-hover:text-gray-300">
-                                <a href="#">
+                                <a href="{{ route('posts.show', ['post' => $post]) }}">
                                     <span class="absolute inset-0"></span>
                                     {{ $post->title }}
                                 </a>
@@ -38,8 +38,9 @@
                         </div>
                     </article>
                 @endforeach
-
             </div>
         </div>
+
+        {{ $posts->links() }}
     </div>
 </x-layouts.app>
